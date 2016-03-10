@@ -18,60 +18,51 @@ microAMU_in_MeV =  931.494061E-6
 ##############################################################  
 
 class isotope(object):
-    """Raw isotope object"""
+	"""Raw isotope object"""
 
 
-    def __init__(self):
-        self.N_Z = 0
-        self.N = 0
-        self.Z = 0
-        self.A = 0
-        self.EL = ' '
-        self.ME = 0
-        self.dME = 0
-    	self.BEA = 0
-    	self.dBEA = 0
-    	self.U = 0
+	def __init__(self):
+		self.N_Z = 0
+		self.N = 0
+		self.Z = 0
+		self.A = 0
+		self.EL = ' '
+		self.ME = 0
+		self.dME = 0
+		self.BEA = 0
+		self.dBEA = 0
+		self.U = 0
 
 
 
-    def __repr__(self):
-        return '\n%d\t%d\t%d\t%d\t%s\t%f\t%f\t%f' % (self.N_Z,self.N,
-            self.Z,self.A,self.EL,self.ME,self.BEA,self.U)
+	def __repr__(self):
+		return '\n%d\t%d\t%d\t%d\t%s\t%f\t%f\t%f' % (self.N_Z,self.N,
+			self.Z,self.A,self.EL,self.ME,self.BEA,self.U)
 
 
 	##############################################################
 	#	Accessing Class Members			  
 	##############################################################
-    def set_N_Z(self,N_Z):
-    	self.N_Z = N_Z
-
-    def set_N(self,N):
-    	self.N = N
-
-    def set_Z(self,Z):
-    	self.Z = Z
-
-    def set_A(self,A):
-        self.A = A
-
-    def set_EL(self,EL):
-    	self.EL = EL
-
-    def set_ME(self,ME):
-    	self.ME = ME
-
-    def set_dME(self,dME):
-    	self.dME = dME
-
-    def set_BEA(self,BEA):
-    	self.BEA = BEA
-
-    def set_dBEA(self,dBEA):
-    	self.dBEA = dBEA
-
-    def set_U(self,U):
-    	self.U = U
+	def set_N_Z(self,N_Z):
+		self.N_Z = N_Z
+	def set_N(self,N):
+		self.N = N
+	def set_Z(self,Z):
+		self.Z = Z
+	def set_A(self,A):
+		self.A = A
+	def set_EL(self,EL):
+		self.EL = EL
+	def set_ME(self,ME):
+		self.ME = ME
+	def set_dME(self,dME):
+		self.dME = dME
+	def set_BEA(self,BEA):
+		self.BEA = BEA
+	def set_dBEA(self,dBEA):
+		self.dBEA = dBEA
+	def set_U(self,U):
+		self.U = U
 
 
 
@@ -83,24 +74,20 @@ class isotope(object):
 ##############################################################
 ##############################################################  
 class Kinematic(isotope):
-    """ object"""
-
-    def __init__(self):
-        isotope.__init__(self)
-    	self.Ea = 0
-        self.EA = 0
-        self.Eb = 0
-        self.EB = 0
-        self.Q = 0
-        self.Theta = 0
-        self.Phi = 0
-        self.Et = 0
-
-
-
-    def __repr__(self):
-        return '\n%d\t%d\t%d\t%d\t%s\t%f\t%f' % (self.Ea,self.Eb,
-            self.EB,self.Q,self.Theta,self.Phi,self.Et)
+	def __init__(self):
+		isotope.__init__(self)
+		self.Ea = 0
+		self.EA = 0
+		self.Eb = 0
+		self.EB = 0
+		self.Q = 0
+		self.Theta = 0
+		self.Phi = 0
+		self.Et = 0
+	
+	def __repr__(self):
+		return '\n%d\t%d\t%d\t%d\t%s\t%f\t%f' % (self.Ea,self.Eb,
+			self.EB,self.Q,self.Theta,self.Phi,self.Et)
 
 
     ##############################################################
@@ -108,29 +95,29 @@ class Kinematic(isotope):
     ##############################################################
     ## Note: A(a,b)B nomenclature Theta for particle b and Phi for particle B
 
-    def set_Ea(self,Ea):
-        self.Ea = Ea
+	def set_Ea(self,Ea):
+		self.Ea = Ea
 
-    def set_EA(self,EA):
-        self.EA = EA
+	def set_EA(self,EA):
+		self.EA = EA
 
-    def set_Eb(self,Eb):
-        self.Eb = Eb
+	def set_Eb(self,Eb):
+		self.Eb = Eb
 
-    def set_EB(self,EB):
-        self.EB = EB
+	def set_EB(self,EB):
+		self.EB = EB
 
-    def set_Q(self,Q):
-        self.Q = Q
+	def set_Q(self,Q):
+		self.Q = Q
 
-    def set_Theta(self,Theta):
-        self.Theta = Theta
+	def set_Theta(self,Theta):
+		self.Theta = Theta
 
-    def set_Phi(self,Phi):
-        self.Phi = Phi
+	def set_Phi(self,Phi):
+		self.Phi = Phi
 
-    def set_Et(self,Et):
-        self.Et = Et
+	def set_Et(self,Et):
+		self.Et = Et
 
 
 
