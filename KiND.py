@@ -13,7 +13,7 @@ microAMU_in_MeV =  931.494061E-6
 
 ##############################################################
 ##############################################################
-########				Peak class					  ########
+# 	Peak class	
 ##############################################################
 ##############################################################  
 
@@ -41,7 +41,7 @@ class isotope(object):
 
 
 	##############################################################
-	########			Accessing Class Members			  ########
+	#	Accessing Class Members			  
 	##############################################################
     def set_N_Z(self,N_Z):
     	self.N_Z = N_Z
@@ -79,7 +79,7 @@ class isotope(object):
 
 ##############################################################
 ##############################################################
-########                Kinematic class               ########
+#	Kinematic class  
 ##############################################################
 ##############################################################  
 class Kinematic(isotope):
@@ -87,7 +87,7 @@ class Kinematic(isotope):
 
     def __init__(self):
         isotope.__init__(self)
-        self.Ea = 0
+    	self.Ea = 0
         self.EA = 0
         self.Eb = 0
         self.EB = 0
@@ -104,7 +104,7 @@ class Kinematic(isotope):
 
 
     ##############################################################
-    ########            Accessing Class Members           ########
+    #	Accessing Class Members    
     ##############################################################
     ## Note: A(a,b)B nomenclature Theta for particle b and Phi for particle B
 
@@ -135,7 +135,7 @@ class Kinematic(isotope):
 
 
 ##############################################################
-########            Utility Functions                 ########
+#	Utility Functions           
 ##############################################################
 
 
@@ -403,13 +403,9 @@ def reacProducts(Ke2,errKe2,A,a,b,B,scatAngle,errScatAngle,Ex3,Ex4):
     # Lorentz invariant of the energy - momentum vector
     s = (m1 + m2)**2 + 2*m1*Ke2             
 
-
-
     # Error in Lorentz invariant of the energy                                                
     errS = math.sqrt((2*(m1+m2)+2*Ke2)**2*errM1**2 + 2*(m1+m2)**2*errM2**2 + 2*m1*errKe2**2 )  
     #print 's = %f +- %f' % (s, errS) 
-
-
 
     # Center of mass momentum for incoming particles and its error
     pcm_in = math.sqrt((1/(4*s))*((s-m1**2-m2**2)**2 - 4*m1**2*m2**2))                     
@@ -428,8 +424,6 @@ def reacProducts(Ke2,errKe2,A,a,b,B,scatAngle,errScatAngle,Ex3,Ex4):
     errChi = math.sqrt(dChi_dpcm**2*errPcm_in**2+dChi_dm1**2*errM1**2)
     #print 'chi = %f +- %6e' % (chi,errChi)
 
-
-
     # Center of mass momentum for outgoing particles and its error
     pcm_out = math.sqrt((1/(4*s))*((s-m3**2-m4**2)**2 - 4*m3**2*m4**2))      
 
@@ -437,8 +431,6 @@ def reacProducts(Ke2,errKe2,A,a,b,B,scatAngle,errScatAngle,Ex3,Ex4):
     dPcmout_dm3 = (-8*m3*m4**2-4*m3*(-m3**2-m4**2+s))/(4*s*math.sqrt((-4*m3**2*m4**2+(-m3**2-m4**2+s)**2)/s))
     dPcmout_dm4 = (-8*m3**2*m4-4*m4*(-m3**2-m4**2+s))/(4*s*math.sqrt((-4*m3**2*m4**2+(-m3**2-m4**2+s)**2)/s))
     errPcm_out = math.sqrt(dPcmout_ds**2*errS**2+dPcmout_dm3**2*errM3**2+dPcmout_dm4**2*errM4**2)
-
-
 
     #first solution of momentum of outgoing projectile
     p3_1 = (1/(1+math.sin(theta)**2*math.sinh(chi)**2))*(math.sqrt(m3**2+pcm_out**2)*math.cos(theta)*math.sinh(chi) - math.cosh(chi)*math.sqrt(pcm_out**2-m3**2*math.sin(theta)**2*math.sinh(chi)**2))
@@ -450,7 +442,6 @@ def reacProducts(Ke2,errKe2,A,a,b,B,scatAngle,errScatAngle,Ex3,Ex4):
     errP3_1 = math.sqrt(dP3_1_dpcm_out**2*errPcm_out**2+dP3_1_dM3**2*errM3**2+dP3_1_dTheta**2*errTheta**2+dP3_1_dChi**2*errChi**2)
     #print 'p3_1 = %f +- %6e' % (p3_1,errP3_1)
 
-
     #Second solution of momentum of outgoing projectile
     p3_2 = (1/(1+math.sin(theta)**2*math.sinh(chi)**2))*(math.sqrt(m3**2+pcm_out**2)*math.cos(theta)*math.sinh(chi) + math.cosh(chi)*math.sqrt(pcm_out**2-m3**2*math.sin(theta)**2*math.sinh(chi)**2))
 
@@ -460,7 +451,6 @@ def reacProducts(Ke2,errKe2,A,a,b,B,scatAngle,errScatAngle,Ex3,Ex4):
     dP3_2_dChi = (math.cosh(chi)*(math.sqrt(m3**2+pcm_out**2)*math.cos(theta))+(m3**2*math.cosh(chi)**2*math.sin(theta)**2*math.sinh(chi))/math.sqrt(pcm_out**2-m3**2*math.sin(theta)**2*math.sinh(chi)**2)-math.sinh(chi)*math.sqrt(pcm_out**2-m3**2*math.sin(theta)**2*math.sinh(chi)**2))/(1+math.sin(theta)**2*math.sinh(chi)**2)-(2*math.cosh(chi)*math.sin(theta)**2*math.sinh(chi)*(math.sqrt(m3**2+pcm_out**2)*math.cos(theta)*math.sinh(chi)-math.cosh(chi)*math.sqrt(pcm_out**2-m3**2*math.sin(theta)**2*math.sinh(chi)**2)))/(1+math.sin(theta)**2*math.sinh(chi)**2)**2
     errP3_2 = math.sqrt(dP3_2_dpcm_out**2*errPcm_out**2+dP3_2_dM3**2*errM3**2+dP3_2_dTheta**2*errTheta**2+dP3_2_dChi**2*errChi**2)
     #print 'p3_2 = %f +- %6e' % (p3_2,errP3_2)
-
 
     # Determine switch solution to use. 
     if p3_1 > p3_2:
